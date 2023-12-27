@@ -5,57 +5,38 @@ set(PROJECT_VESRION 0.0.${PATCH_VERSION})
 
 project(helloworld VERSION ${PROJECT_VESRION})
 
-find_package(Boost COMPONENTS unit_test_framework REQUIRED)
-
 configure_file(version.h.in version.h)
 
 add_executable(helloworld_cli main.cpp)
 add_library(helloworld lib.cpp)
-add_executable(test_version test_version.cpp)
 
-set_target_properties(helloworld_cli helloworld test_version PROPERTIES
-    CXX_STANDARD 14
-    CXX_STANDARD_REQUIRED ON
+set_target_properties(helloworld_cli helloworld PROPERTIES
+        CXX_STANDARD 14
+        CXX_STANDARD_REQUIRED ON
 )
 target_include_directories(helloworld
-    PRIVATE "${CMAKE_BINARY_DIR}"
-)
-set_target_properties(test_version PROPERTIES
-    COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
-    INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
+        PRIVATE "${CMAKE_BINARY_DIR}"
 )
 
 target_link_libraries(helloworld_cli PRIVATE
-    helloworld
-)
-
-target_link_libraries(test_version
-    ${Boost_LIBRARIES}
-    helloworld
+        helloworld
 )
 
 if (MSVC)
     target_compile_options(helloworld_cli PRIVATE
-        /W4
+            /W4
     )
     target_compile_options(helloworld PRIVATE
-        /W4
-    )
-    target_compile_options(test_version PRIVATE
-        /W4
+            /W4
     )
 else ()
     target_compile_options(helloworld_cli PRIVATE
-        -Wall -Wextra -pedantic -Werror
+            -Wall -Wextra -pedantic -Werror
     )
     target_compile_options(helloworld PRIVATE
-        -Wall -Wextra -pedantic -Werror
+            -Wall -Wextra -pedantic -Werror
     )
-    target_compile_options(test_version PRIVATE
-        -Wall -Wextra -pedantic -Werror
-    )
-endif()
-
+endif ()
 
 
 install(TARGETS helloworld_cli RUNTIME DESTINATION bin)
@@ -76,5 +57,55 @@ set(CPACK_PACKAGE_CONTACT example@example.com)
 include(CPack)
 
 enable_testing()
+
+set(WITH_TESTS ON CACHE BOOL "" FORCE)
+if (WITH_TESTS)
+    find_package(googletest)
+    if (NOT googletest_FOUND)
+        message("${Yellow}==> !!! GoogleTest not found${ColourReset}")
+        include(FetchContent)
+        FetchContent_Declare(
+                googletest
+                GIT_REPOSITORY https://github.com/google/googletest.git
+                GIT_TAG v1.14.0
+        )
+        FetchContent_MakeAvailable(googletest)
+        message("${Green}==> !!! FetchContent GoogleTest from GIT${ColourReset}")
+    endif ()
+
+    # Test target
+    set(test_DIR ${CMAKE_CURRENT_LIST_DIR}/tests/)
+    add_executable(test_version
+            test_version.cpp
+    )
+
+    # Link test target against gtest libraries
+    target_link_libraries(test_version PRIVATE
+            gtest
+            #gmock
+            gtest_main
+            #gmock_main
+            helloworld
+    )
+    set_target_properties(test_version PROPERTIES
+            CXX_STANDARD 14
+            CXX_STANDARD_REQUIRED ON
+            GTEST_COLOR ON
+    )
+    target_compile_options(test_version PUBLIC
+            -g
+            -Wall
+            -Wextra
+            -pedantic
+            #-fsanitize=leak
+            #-fsanitize=address
+            #-fsanitize=undefined
+    )
+
+    #set(COMM_SANITIZER "-fsanitize=address -fsanitize=undefined -fsanitize-recover=all")
+    #set(CMAKE_CXX_FLAGS ${COMM_SANITIZER})
+    #set(DCMAKE_C_FLAGS ${COMM_SANITIZER})
+    #set(CMAKE_EXE_LINKER_FLAGS ${COMM_SANITIZER})
+endif ()
 
 add_test(test_version test_version)
