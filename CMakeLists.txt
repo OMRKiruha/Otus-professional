@@ -9,7 +9,5 @@ set(Blue        "${Esc}[34m")
 
 project(otus-prof-hw)
 
-set(PATCH_VERSION "2" CACHE INTERNAL "Patch version")
-
 add_subdirectory(hw01)
 
