@@ -3,37 +3,37 @@ cmake_minimum_required(VERSION 3.10)
 set(PATCH_VERSION "2" CACHE INTERNAL "Patch version")
 set(PROJECT_VESRION 0.0.${PATCH_VERSION})
 
-project(helloworld VERSION ${PROJECT_VESRION})
+project(01_helloworld VERSION ${PROJECT_VESRION})
 
 configure_file(version.h.in version.h)
 
 add_executable(helloworld_cli main.cpp)
-add_library(helloworld lib.cpp)
+add_library(01_helloworld lib.cpp)
 
-set_target_properties(helloworld_cli helloworld PROPERTIES
+set_target_properties(helloworld_cli 01_helloworld PROPERTIES
         CXX_STANDARD 14
         CXX_STANDARD_REQUIRED ON
 )
-target_include_directories(helloworld
+target_include_directories(01_helloworld
         PRIVATE "${CMAKE_BINARY_DIR}"
 )
 
 target_link_libraries(helloworld_cli PRIVATE
-        helloworld
+        01_helloworld
 )
 
 if (MSVC)
     target_compile_options(helloworld_cli PRIVATE
             /W4
     )
-    target_compile_options(helloworld PRIVATE
+    target_compile_options(01_helloworld PRIVATE
             /W4
     )
 else ()
     target_compile_options(helloworld_cli PRIVATE
             -Wall -Wextra -pedantic -Werror
     )
-    target_compile_options(helloworld PRIVATE
+    target_compile_options(01_helloworld PRIVATE
             -Wall -Wextra -pedantic -Werror
     )
 endif ()
@@ -85,7 +85,7 @@ if (WITH_TESTS)
             #gmock
             gtest_main
             #gmock_main
-            helloworld
+            01_helloworld
     )
     set_target_properties(test_version PROPERTIES
             CXX_STANDARD 14

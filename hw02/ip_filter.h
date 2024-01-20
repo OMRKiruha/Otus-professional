@@ -4,14 +4,28 @@
 
 #pragma once
 
+#include "ip.h"
+
 #include <string>
 #include <vector>
 #include <iostream>
+#include <cstdint>
 
-using Ip_Pool = std::vector<std::vector<std::string> >;
+
+using Ip_Pool = std::vector<IP>;
 
 
 std::vector<std::string> split(std::string_view str, char d);
 
 
-void print_ip(const Ip_Pool& ip_pool) noexcept;
+void print_ip_pool(const Ip_Pool& ip_pool) noexcept;
+
+
+Ip_Pool rsort(const Ip_Pool& ip_pool);
+
+
+Ip_Pool ip_filter(const Ip_Pool &ip_pool, int32_t firstByte);
+
+Ip_Pool ip_filter(const Ip_Pool &ip_pool, int32_t firstByte, int32_t secondByte);
+
+Ip_Pool ip_any_filter(const Ip_Pool &ip_pool, int32_t anyByte);

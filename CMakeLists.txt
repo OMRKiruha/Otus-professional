@@ -10,4 +10,5 @@ set(Blue        "${Esc}[34m")
 project(otus-prof-hw)
 
 add_subdirectory(hw01)
+add_subdirectory(hw02)
 

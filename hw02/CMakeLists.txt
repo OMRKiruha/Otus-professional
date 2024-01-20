@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.10)
 set(PATCH_VERSION "1" CACHE INTERNAL "Patch version")
 set(PROJECT_VESRION 0.0.${PATCH_VERSION})
 
-project(ip_filter VERSION ${PROJECT_VESRION})
+project(02_ip_filter VERSION ${PROJECT_VESRION})
 
 configure_file(version.h.in version.h)
 
@@ -11,6 +11,8 @@ add_executable(${PROJECT_NAME}
         main.cpp
         ip_filter.cpp
         ip_filter.h
+        ip.cpp
+        ip.h
 )
 set(CMAKE_EXE_LINKER_FLAGS "-static-libstdc++ -static-libgcc")
 
