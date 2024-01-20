@@ -1,6 +1,5 @@
 
 #include "ip_filter.h"
-#include "ip.h"
 
 #include <algorithm>
 
@@ -17,20 +16,20 @@
  * @return вектор строк
  */
 std::vector<std::string> split(std::string_view str, char d) {
-    std::vector<std::string> r;
 
+    std::vector<std::string> result;
     std::string::size_type start = 0;
     std::string::size_type stop = str.find_first_of(d);
-    while (stop != std::string::npos) {
-        r.emplace_back(str.substr(start, stop - start));
 
+    while (stop != std::string::npos) {
+        result.emplace_back(str.substr(start, stop - start));
         start = stop + 1;
         stop = str.find_first_of(d, start);
     }
 
-    r.emplace_back(str.substr(start));
+    result.emplace_back(str.substr(start));
 
-    return r;
+    return result;
 }
 
 
@@ -50,7 +49,7 @@ void print_ip_pool(const Ip_Pool &ip_pool) noexcept {
  * @param ip_pool - пул IP-адресов
  * @return
  */
-Ip_Pool rsort(const Ip_Pool &ip_pool) {
+Ip_Pool rsort(const Ip_Pool &ip_pool) noexcept {
     Ip_Pool result{ip_pool};
     std::sort(result.rbegin(), result.rend());
     return result;
@@ -63,7 +62,7 @@ Ip_Pool rsort(const Ip_Pool &ip_pool) {
  * @param firstByte - первый байт
  * @return
  */
-Ip_Pool ip_filter(const Ip_Pool &ip_pool, int32_t firstByte) {
+Ip_Pool ip_filter(const Ip_Pool &ip_pool, int32_t firstByte) noexcept {
     Ip_Pool result;
     std::copy_if(ip_pool.begin(), ip_pool.end(), std::back_inserter(result),
                  [firstByte](const IP &ip) {
@@ -80,7 +79,7 @@ Ip_Pool ip_filter(const Ip_Pool &ip_pool, int32_t firstByte) {
  * @param secondByte - второй байт
  * @return
  */
-Ip_Pool ip_filter(const Ip_Pool &ip_pool, int32_t firstByte, int32_t secondByte) {
+Ip_Pool ip_filter(const Ip_Pool &ip_pool, int32_t firstByte, int32_t secondByte) noexcept {
     Ip_Pool result;
     std::copy_if(ip_pool.begin(), ip_pool.end(), std::back_inserter(result),
                  [firstByte, secondByte](const IP &ip) {
@@ -96,9 +95,9 @@ Ip_Pool ip_filter(const Ip_Pool &ip_pool, int32_t firstByte, int32_t secondByte)
  * @param anyByte - любой байт
  * @return
  */
-Ip_Pool ip_any_filter(const Ip_Pool &ip_pool, int32_t anyByte) {
+Ip_Pool ip_any_filter(const Ip_Pool &ip_pool, int32_t anyByte) noexcept {
     Ip_Pool result;
     std::copy_if(ip_pool.begin(), ip_pool.end(), std::back_inserter(result),
-                 [anyByte](const IP& ip) { return ip.isByteInIP(anyByte); });
+                 [anyByte](const IP &ip) { return ip.isByteInIP(anyByte); });
     return result;
 }

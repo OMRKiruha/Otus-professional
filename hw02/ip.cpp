@@ -42,22 +42,22 @@ bool IP::operator<(const IP &other) const {
  */
 std::string IP::getIP() const {
     std::string result;
-    for (auto ip_part = m_str_ip.cbegin(); ip_part != m_str_ip.cend(); ++ip_part) {
-        if (ip_part != m_str_ip.cbegin()) {
-            result += ".";
-        }
-        result += *ip_part;
-    }
+    std::for_each(m_str_ip.cbegin(), m_str_ip.cend(),
+                  [&result](std::string_view str) {
+                      result += str;
+                      result += '.';
+                  });
+    result.pop_back();
     return result;
 }
 
 
 int32_t IP::getFirstByte() const {
-    return static_cast<int32_t>(m_long_ip/1000000000);
+    return static_cast<int32_t>(m_long_ip / 1000000000);
 }
 
 int32_t IP::getSecondByte() const {
-    return static_cast<int32_t>((m_long_ip%1000000000)/1000000);
+    return static_cast<int32_t>((m_long_ip % 1000000000) / 1000000);
 }
 
 bool IP::isByteInIP(int32_t anyByte) const {
