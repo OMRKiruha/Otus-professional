@@ -28,14 +28,12 @@ struct MyAllocator {
 
 };
 
-template <class T, class U>
-constexpr bool operator== (const MyAllocator<T>& a1, const MyAllocator<U>& a2) noexcept
-{
+template<class T, class U>
+constexpr bool operator==(const MyAllocator<T> &a1, const MyAllocator<U> &a2) noexcept {
     return true;
 }
 
-template <class T, class U>
-constexpr bool operator!= (const MyAllocator<T>& a1, const MyAllocator<U>& a2) noexcept
-{
+template<class T, class U>
+constexpr bool operator!=(const MyAllocator<T> &a1, const MyAllocator<U> &a2) noexcept {
     return false;
 }

@@ -5,6 +5,7 @@
 #include <iostream>
 #include <map>
 #include <forward_list>
+#include <vector>
 
 #include "MyVector.h"
 #include "MyAllocator.h"
@@ -59,7 +60,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char const *argv[]) {
     fillBySequence(std_allocator_vector, 0, 9);
 
     // создание экземпляра своего контейнера для хранения значений типа int с новым аллокатором, ограниченным 10 элементами
-    MyVector<int32_t> my_allocator_vector;
+    MyVector<int32_t, MyAllocator<int32_t>> my_allocator_vector;
 
     // заполнение 10 элементами от 0 до 9
     fillBySequence(my_allocator_vector, 0, 9);
@@ -67,8 +68,6 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char const *argv[]) {
     // вывод на экран всех значений, хранящихся в контейнере
     printContainer(std_allocator_vector, "MyForwardList with std::allocator");
     printContainer(my_allocator_vector, "MyForwardList with std::allocator");
-
-    std::forward_list<int> fl;
 
     return 0;
 }
