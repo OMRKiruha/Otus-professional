@@ -10,7 +10,7 @@ configure_file(version.h.in version.h)
 add_executable(${PROJECT_NAME}
         main.cpp
         MyForwardList.h
-        MyAllocator.h
+        MyVector.h
 )
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
