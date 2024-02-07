@@ -8,7 +8,7 @@
 template<typename T>
 class MyVecIterator;
 
-//#define DEBUG
+// #define DEBUG
 
 template<typename T, class Allocator = std::allocator<T> >
 class MyVector {
@@ -133,6 +133,10 @@ public:
 
     void reserve(size_t new_capacity) {
         if (new_capacity > m_capacity) {
+#ifdef DEBUG
+            std::cout << "\tРезервируем " << new_capacity << " элементов. Предыдущая ёмкость "
+                      << m_capacity << " элементов \n";
+#endif
             pointer new_data = allocate(new_capacity);
             for (size_t i = 0; i < m_size; ++i) {
                 std::allocator_traits<Allocator>::construct(m_alloc, new_data + i, std::move(m_begin[i]));
@@ -145,6 +149,9 @@ public:
     }
 
     void clear() noexcept {
+#ifdef DEBUG
+        std::cout << "\tОчищаем " << m_size << " элементов\n";
+#endif
         for (size_t i = 0; i < m_size; ++i) {
             std::allocator_traits<Allocator>::destroy(m_alloc, m_begin + i);
         }
@@ -161,7 +168,14 @@ public:
 
     template<typename... Args>
     T &emplace_back(Args &&... args) {
-        reserve(m_size + 1);
+#ifdef DEBUG
+        std::cout << "\tВставка в конец size = " << m_size << "\tcapacity = " << m_capacity << "\n";
+#endif
+        if (m_size == m_capacity) {
+            reserve(std::max<int64_t>(m_size * m_multiplicator, m_min_elements));
+        } else {
+            reserve(m_size + 1);
+        }
         std::allocator_traits<Allocator>::construct(m_alloc, m_begin + m_size, std::forward<Args>(args)...);
         ++m_size;
         return back();
@@ -178,7 +192,11 @@ public:
     template<typename... Args>
     iterator emplace(const_iterator pos, Args &&... args) {
         size_t index = pos - cbegin();
-        reserve(m_size + 1);
+        if (m_size == m_capacity) {
+            reserve(std::max<int64_t>(m_size * m_multiplicator, m_min_elements));
+        } else {
+            reserve(m_size + 1);
+        }
         for (size_t i = m_size; i > index; --i) {
             std::allocator_traits<Allocator>::construct(m_alloc, m_begin + i, std::move(m_begin[i - 1]));
             std::allocator_traits<Allocator>::destroy(m_alloc, m_begin + i - 1);
@@ -257,7 +275,7 @@ public:
 
 private:
     const size_t m_min_elements = 4;
-    const double m_multiplicator = 1.5;
+    const int32_t m_multiplicator = 2;
     T *m_begin = nullptr;
     T *m_end = nullptr;
     T *m_end_capacity = nullptr;
@@ -275,18 +293,6 @@ private:
     void deallocate(pointer ptr, size_t count) {
         std::allocator_traits<Allocator>::deallocate(m_alloc, ptr, count);
     }
-
-    // Удаляем элементы
-    void delete_elements() {
-#ifdef DEBUG
-        std::cout << "\tУдаляем элементы. Size = " << m_size << " Capacity = " << m_capacity << "\n";
-#endif
-        std::allocator_traits<T>::deallocate(m_alloc, m_begin, m_capacity);
-        m_begin = nullptr;
-        m_end = nullptr;
-        m_end_capacity = nullptr;
-    }
-
 };
 
 template<typename T>

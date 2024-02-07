@@ -4,6 +4,7 @@ set(PATCH_VERSION "1" CACHE INTERNAL "Patch version")
 set(PROJECT_VESRION 0.0.${PATCH_VERSION})
 
 project(03_my_allocator VERSION ${PROJECT_VESRION})
+set(BUILD_SHARED_LIBS OFF)
 
 configure_file(version.h.in version.h)
 
