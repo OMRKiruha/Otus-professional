@@ -1,7 +1,6 @@
 //
 // Created by Professional on 03.02.2024.
 //
-#include <cstdint>
 #include <iostream>
 
 #include "MyAllocator.h"
