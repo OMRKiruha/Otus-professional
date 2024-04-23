@@ -50,6 +50,8 @@ jobs:
           doxyfile-path: ./Doxyfile
           working-directory: .
 
+      - run: ls -la /home/runner/work/Otus-professional/Otus-professional/doc/html/
+
       # Deploy the HTML documentation to GitHub Pages
       - name: GH Pages Deployment
         uses: peaceiris/actions-gh-pages@v3
