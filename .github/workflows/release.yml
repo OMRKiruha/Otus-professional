@@ -48,9 +48,7 @@ jobs:
         uses: mattnotmitt/doxygen-action@v1.1.0
         with:
           doxyfile-path: ./Doxyfile
-          working-directory: .
-
-      - run: ls -la /home/runner/work/Otus-professional/Otus-professional
+          working-directory: ./hw04
 
       # Deploy the HTML documentation to GitHub Pages
       - name: GH Pages Deployment
