@@ -2,12 +2,13 @@
 // Created by Professional on 18.02.2024.
 //
 
-#include <string>
-#include <vector>
-#include <list>
+#include <array>
 #include <cstdint>
 #include <iostream>
-#include <array>
+#include <list>
+#include <string>
+#include <tuple>
+#include <vector>
 
 /**
  * @brief Шаблонная функция "вывода IP" для целых чисел
