@@ -29,6 +29,7 @@ else ()
             -Wall
             -Wextra
             -pedantic
+            #-fdump-tree-all
             #-Werror
     )
 endif ()

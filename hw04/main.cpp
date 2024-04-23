@@ -9,7 +9,6 @@
 #include <iostream>
 #include <array>
 
-
 /**
  * @brief Шаблонная функция "вывода IP" для целых чисел
  * @tparam Integer
@@ -29,6 +28,7 @@ void print_ip(Integer integer) {
     std::cout << std::endl;
 }
 
+
 /**
  * @brief Шаблон для строк
  * @param string - строковое представление выводимых данных
@@ -37,6 +37,7 @@ template<typename String, std::enable_if_t<std::is_same_v<std::remove_cv_t<Strin
 void print_ip(const String &string) {
     std::cout << string << std::endl;
 }
+
 
 /**
  * @brief Шаблон для std::vector и std::list
@@ -53,60 +54,65 @@ void print_ip(const VectorList &vec) {
     std::cout << std::endl;
 }
 
-template<typename T, typename Tuple>
-struct AllSame;
-
-template<typename T>
-struct AllSame<T, std::tuple<>> : std::true_type {
-};
-
-template<typename T, typename U, typename... Ts>
-struct AllSame<T, std::tuple<U, Ts...>>
-        : std::conditional_t<std::is_same_v<T, U>, AllSame<T, std::tuple<Ts...>>, std::false_type> {
-};
 
 /**
- *
+ * @brief Рекурсивный шаблон проверки одинаковости типов всех элементов std::tuple<...>
+ * @tparam TupleLike - тип std::tuple<...>
+ * @tparam I - текущий номер проверяемого элемента
+ * @return true - если все элементы одинаковые, false (а точнее ломает выполнение компиляции static_assert) - если типы отличаются
  */
-//template<class TupleLike, std::size_t I, typename PrevElement_t>
-//bool isSameTypeAtIndex() {
-//    if constexpr (I + 1 < std::tuple_size_v<TupleLike>) {
-//        if constexpr (not std::is_same_v(PrevElement_t,std::tuple_element_t<I+1, TupleLike>) )
-//        return isSameTypeAtIndex<TupleLike, I+1, std::tuple_element_t<I, TupleLike>>();
-//    }
-//    return true;
-//    std::cout << "  The type at index " << I << " is: ";
-//    using SelectedType = std::tuple_element_t<I, TupleLike>;
-//    std::cout << typeid(SelectedType).name() << '\n';
-//
-//}
+template<class TupleLike, std::size_t I>
+constexpr bool isSameTypeAtIndex() {
+    if constexpr (I + 1 < std::tuple_size_v<TupleLike>) {       // Проверили на конец тапла
+        if constexpr (not std::is_same_v<std::tuple_element_t<I, TupleLike>(), std::tuple_element_t<
+                I + 1, TupleLike>()>) {
+            static_assert(false, "\033[1;31m ----------!!!--- In tuple all elements must be same type ---!!!---------------------- \033[0m");
+            return false;
+        }
+        return isSameTypeAtIndex<TupleLike, I + 1>();
+    }
+    return true;
+}
 
-//template<typename TupleLike, std::size_t I = 0>
-//bool isSameTypes() {
-//    static_assert(I == 0, "Tuple size must be not NULL");
-//    if constexpr (I == 1) {
-//        return true;
-//    }
-//
-//    return isSameTypeAtIndex<TupleLike, 0, std::tuple_element_t<0, TupleLike>>();
-//    if constexpr (I < std::tuple_size_v<TupleLike>) {
-//        isSameTypeAtIndex<TupleLike, I>();
-//        isSameTypes<TupleLike, I + 1>();
-//    }
-//}
+/**
+ * @brief Начало проверки того что в std::tuple<...> типы всех элементов одинаковые
+ * @tparam TupleLike - тип std::tuple<...>
+ * @return
+ */
+template<typename TupleLike>
+constexpr bool isSameTypes() {
+    static_assert(std::tuple_size_v<TupleLike> != 0, "\033[1;31m ----------!!!--- Tuple size must be not NULL ---!!!---------------------- \033[0m");
+    if constexpr (std::tuple_size_v<TupleLike> == 1) { return true; }
 
+    return isSameTypeAtIndex<TupleLike, 0>();
+}
+
+/**
+ * @brief Собственно реализация вывода элементов std::tuple
+ * @tparam TupleT - тип std::tuple<...>
+ * @tparam Is - Набор индексов, перебирая которые мы имитируем цикл
+ * @param tp - собственно объект std::tuple<...>
+ */
+template <typename TupleT, std::size_t... Is>
+void printTupleImp(const TupleT& tp, std::index_sequence<Is...>) {
+    size_t index = 0;
+    auto printElem = [&index](const auto& x) {
+        if (index++ > 0)
+            std::cout << ".";
+        std::cout << x;
+    };
+
+    (printElem(std::get<Is>(tp)), ...);
+    std::cout << std::endl;
+}
 
 /**
  * @brief Шаблон для стандартных туплов
  * @param tuple - ссылка на контейнер
  */
-template<typename Tuple, std::enable_if_t<std::is_same_v<std::remove_cv_t<Tuple>, std::tuple<typename Tuple::value_type>>, bool> = true>
-void print_ip(Tuple tuple) {
-    for (const auto &elem: tuple) {
-        if (elem != tuple.front()) std::cout << ".";
-        std::cout << elem;
-    }
-    std::cout << std::endl;
+template<typename ... Args, std::enable_if_t<isSameTypes<std::tuple<Args...>>(), bool> = true>
+void print_ip(const std::tuple<Args...>& tuple) {
+    printTupleImp(tuple, std::make_index_sequence<std::tuple_size_v<std::tuple<Args...>>>{});
 }
 
 
@@ -119,7 +125,7 @@ int main() {
     print_ip(std::string{"Hello, World!"}); // Hello, World!
     print_ip(std::vector<int>{100, 200, 300, 400}); // 100.200.300.400
     print_ip(std::list<short>{400, 300, 200, 100}); // 400.300.200.100
-//    print_ip(std::make_tuple(123, 456, 789, 0)); // 123.456.789.0
+    print_ip(std::make_tuple(123, 456, 789, 0)); // 123.456.789.0
 
     return EXIT_SUCCESS;
 }
