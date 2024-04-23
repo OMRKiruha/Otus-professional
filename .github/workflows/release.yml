@@ -27,7 +27,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.run_number }}
-          release_name: Release ${{ github.run_number }}
+          release_name: print_ip
           draft: false
           prerelease: false
 
@@ -39,8 +39,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./04_print_ip-0.0.1-Linux.deb
-          asset_name: 04_print_ip-0.0.1-Linux.deb
+          asset_path: ./print_ip-0.0.1-Linux.deb
+          asset_name: print_ip-0.0.1-Linux.deb
           asset_content_type: application/vnd.debian.binary-package
 
       # Build the HTML documentation
