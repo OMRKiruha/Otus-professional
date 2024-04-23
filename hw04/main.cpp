@@ -67,7 +67,7 @@ constexpr bool isSameTypeAtIndex() {
     if constexpr (I + 1 < std::tuple_size_v<TupleLike>) {       // Проверили на конец тапла
         if constexpr (not std::is_same_v<std::tuple_element_t<I, TupleLike>(), std::tuple_element_t<
                 I + 1, TupleLike>()>) {
-            static_assert(false, "\033[1;31m ----------!!!--- In tuple all elements must be same type ---!!!---------------------- \033[0m");
+//            static_assert(false, "\033[1;31m ----------!!!--- In tuple all elements must be same type ---!!!---------------------- \033[0m");
             return false;
         }
         return isSameTypeAtIndex<TupleLike, I + 1>();
