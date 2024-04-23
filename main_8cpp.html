@@ -1,0 +1,391 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OTUS Professional HW: Файл main.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">OTUS Professional HW
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Функции</a>  </div>
+  <div class="headertitle"><div class="title">Файл main.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;array&gt;</code><br />
+<code>#include &lt;cstdint&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;list&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;tuple&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Граф включаемых заголовочных файлов для main.cpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="main_8cpp__incl.png" border="0" usemap="#amain_8cpp" alt=""/></div>
+<map name="amain_8cpp" id="amain_8cpp">
+<area shape="rect" title=" " alt="" coords="240,5,313,31"/>
+<area shape="rect" title=" " alt="" coords="5,79,55,105"/>
+<area shape="poly" title=" " alt="" coords="240,32,71,81,69,75,239,27"/>
+<area shape="rect" title=" " alt="" coords="79,79,139,105"/>
+<area shape="poly" title=" " alt="" coords="249,34,152,75,150,70,247,29"/>
+<area shape="rect" title=" " alt="" coords="162,79,234,105"/>
+<area shape="poly" title=" " alt="" coords="265,34,224,70,221,66,262,30"/>
+<area shape="rect" title=" " alt="" coords="257,79,296,105"/>
+<area shape="poly" title=" " alt="" coords="279,31,279,63,274,63,274,31"/>
+<area shape="rect" title=" " alt="" coords="319,79,373,105"/>
+<area shape="poly" title=" " alt="" coords="290,29,326,66,322,70,286,33"/>
+<area shape="rect" title=" " alt="" coords="397,79,447,105"/>
+<area shape="poly" title=" " alt="" coords="302,29,385,69,382,74,300,34"/>
+<area shape="rect" title=" " alt="" coords="471,79,528,105"/>
+<area shape="poly" title=" " alt="" coords="315,29,457,74,455,79,313,34"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:ab84685271b6823ea1f2cf24ed6d37028" id="r_ab84685271b6823ea1f2cf24ed6d37028"><td class="memTemplParams" colspan="2">template&lt;typename Integer , std::enable_if_t&lt; std::is_integral_v&lt; Integer &gt;, bool &gt;  = true&gt; </td></tr>
+<tr class="memitem:ab84685271b6823ea1f2cf24ed6d37028"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ab84685271b6823ea1f2cf24ed6d37028">print_ip</a> (Integer integer)</td></tr>
+<tr class="memdesc:ab84685271b6823ea1f2cf24ed6d37028"><td class="mdescLeft">&#160;</td><td class="mdescRight">Шаблонная функция "вывода IP" для целых чисел  <br /></td></tr>
+<tr class="separator:ab84685271b6823ea1f2cf24ed6d37028"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4fb0b53451bec4d633a1ec8989dc24c" id="r_af4fb0b53451bec4d633a1ec8989dc24c"><td class="memTemplParams" colspan="2">template&lt;typename String , std::enable_if_t&lt; std::is_same_v&lt; std::remove_cv_t&lt; String &gt;, std::string &gt;, bool &gt;  = true&gt; </td></tr>
+<tr class="memitem:af4fb0b53451bec4d633a1ec8989dc24c"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#af4fb0b53451bec4d633a1ec8989dc24c">print_ip</a> (const String &amp;string)</td></tr>
+<tr class="memdesc:af4fb0b53451bec4d633a1ec8989dc24c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Шаблон для строк  <br /></td></tr>
+<tr class="separator:af4fb0b53451bec4d633a1ec8989dc24c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a377f6c452d7c360b41a171768a911956" id="r_a377f6c452d7c360b41a171768a911956"><td class="memTemplParams" colspan="2">template&lt;typename VectorList , std::enable_if_t&lt; std::is_same_v&lt; std::remove_cv_t&lt; VectorList &gt;, std::vector&lt; typename VectorList::value_type &gt; &gt;||std::is_same_v&lt; std::remove_cv_t&lt; VectorList &gt;, std::list&lt; typename VectorList::value_type &gt; &gt;, bool &gt;  = true&gt; </td></tr>
+<tr class="memitem:a377f6c452d7c360b41a171768a911956"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a377f6c452d7c360b41a171768a911956">print_ip</a> (const VectorList &amp;vec)</td></tr>
+<tr class="memdesc:a377f6c452d7c360b41a171768a911956"><td class="mdescLeft">&#160;</td><td class="mdescRight">Шаблон для std::vector и std::list.  <br /></td></tr>
+<tr class="separator:a377f6c452d7c360b41a171768a911956"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6f25af88e0c4e90cd0146cdabde73d6" id="r_ad6f25af88e0c4e90cd0146cdabde73d6"><td class="memTemplParams" colspan="2">template&lt;class TupleLike , std::size_t I&gt; </td></tr>
+<tr class="memitem:ad6f25af88e0c4e90cd0146cdabde73d6"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ad6f25af88e0c4e90cd0146cdabde73d6">isSameTypeAtIndex</a> ()</td></tr>
+<tr class="memdesc:ad6f25af88e0c4e90cd0146cdabde73d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Рекурсивный шаблон проверки одинаковости типов всех элементов std::tuple&lt;...&gt;  <br /></td></tr>
+<tr class="separator:ad6f25af88e0c4e90cd0146cdabde73d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1098db069fe12f2ae8a02ae59055911" id="r_ad1098db069fe12f2ae8a02ae59055911"><td class="memTemplParams" colspan="2">template&lt;typename TupleLike &gt; </td></tr>
+<tr class="memitem:ad1098db069fe12f2ae8a02ae59055911"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ad1098db069fe12f2ae8a02ae59055911">isSameTypes</a> ()</td></tr>
+<tr class="memdesc:ad1098db069fe12f2ae8a02ae59055911"><td class="mdescLeft">&#160;</td><td class="mdescRight">Начало проверки того что в std::tuple&lt;...&gt; типы всех элементов одинаковые  <br /></td></tr>
+<tr class="separator:ad1098db069fe12f2ae8a02ae59055911"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbc741db0adfca11ec98ec677b51f905" id="r_afbc741db0adfca11ec98ec677b51f905"><td class="memTemplParams" colspan="2">template&lt;typename TupleT , std::size_t... Is&gt; </td></tr>
+<tr class="memitem:afbc741db0adfca11ec98ec677b51f905"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#afbc741db0adfca11ec98ec677b51f905">printTupleImp</a> (const TupleT &amp;tp, std::index_sequence&lt; Is... &gt;)</td></tr>
+<tr class="memdesc:afbc741db0adfca11ec98ec677b51f905"><td class="mdescLeft">&#160;</td><td class="mdescRight">Собственно реализация вывода элементов std::tuple.  <br /></td></tr>
+<tr class="separator:afbc741db0adfca11ec98ec677b51f905"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b19948f01c14dc302d9b5363df813b5" id="r_a2b19948f01c14dc302d9b5363df813b5"><td class="memTemplParams" colspan="2">template&lt;typename ... Args, std::enable_if_t&lt; <a class="el" href="#ad1098db069fe12f2ae8a02ae59055911">isSameTypes</a>&lt; std::tuple&lt; Args... &gt; &gt;(), bool &gt;  = true&gt; </td></tr>
+<tr class="memitem:a2b19948f01c14dc302d9b5363df813b5"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a2b19948f01c14dc302d9b5363df813b5">print_ip</a> (const std::tuple&lt; Args... &gt; &amp;tuple)</td></tr>
+<tr class="memdesc:a2b19948f01c14dc302d9b5363df813b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Шаблон для стандартных туплов  <br /></td></tr>
+<tr class="separator:a2b19948f01c14dc302d9b5363df813b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4" id="r_ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
+<tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Функции</h2>
+<a id="ad6f25af88e0c4e90cd0146cdabde73d6" name="ad6f25af88e0c4e90cd0146cdabde73d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6f25af88e0c4e90cd0146cdabde73d6">&#9670;&#160;</a></span>isSameTypeAtIndex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class TupleLike , std::size_t I&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool isSameTypeAtIndex </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Рекурсивный шаблон проверки одинаковости типов всех элементов std::tuple&lt;...&gt; </p>
+<dl class="tparams"><dt>Параметры шаблона</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">TupleLike</td><td>- тип std::tuple&lt;...&gt; </td></tr>
+    <tr><td class="paramname">I</td><td>- текущий номер проверяемого элемента </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true - если все элементы одинаковые, false (а точнее ломает выполнение компиляции static_assert) - если типы отличаются </dd></dl>
+
+</div>
+</div>
+<a id="ad1098db069fe12f2ae8a02ae59055911" name="ad1098db069fe12f2ae8a02ae59055911"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1098db069fe12f2ae8a02ae59055911">&#9670;&#160;</a></span>isSameTypes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TupleLike &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool isSameTypes </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Начало проверки того что в std::tuple&lt;...&gt; типы всех элементов одинаковые </p>
+<dl class="tparams"><dt>Параметры шаблона</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">TupleLike</td><td>- тип std::tuple&lt;...&gt; </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="ae66f6b31b5ad750f1fe042a706a4e3d4" name="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae66f6b31b5ad750f1fe042a706a4e3d4">&#9670;&#160;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2b19948f01c14dc302d9b5363df813b5" name="a2b19948f01c14dc302d9b5363df813b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b19948f01c14dc302d9b5363df813b5">&#9670;&#160;</a></span>print_ip() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ... Args, std::enable_if_t&lt; <a class="el" href="#ad1098db069fe12f2ae8a02ae59055911">isSameTypes</a>&lt; std::tuple&lt; Args... &gt; &gt;(), bool &gt;  = true&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_ip </td>
+          <td>(</td>
+          <td class="paramtype">const std::tuple&lt; Args... &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>tuple</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Шаблон для стандартных туплов </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tuple</td><td>- ссылка на контейнер </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af4fb0b53451bec4d633a1ec8989dc24c" name="af4fb0b53451bec4d633a1ec8989dc24c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4fb0b53451bec4d633a1ec8989dc24c">&#9670;&#160;</a></span>print_ip() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename String , std::enable_if_t&lt; std::is_same_v&lt; std::remove_cv_t&lt; String &gt;, std::string &gt;, bool &gt;  = true&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_ip </td>
+          <td>(</td>
+          <td class="paramtype">const String &amp;</td>          <td class="paramname"><span class="paramname"><em>string</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Шаблон для строк </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">string</td><td>- строковое представление выводимых данных </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a377f6c452d7c360b41a171768a911956" name="a377f6c452d7c360b41a171768a911956"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a377f6c452d7c360b41a171768a911956">&#9670;&#160;</a></span>print_ip() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename VectorList , std::enable_if_t&lt; std::is_same_v&lt; std::remove_cv_t&lt; VectorList &gt;, std::vector&lt; typename VectorList::value_type &gt; &gt;||std::is_same_v&lt; std::remove_cv_t&lt; VectorList &gt;, std::list&lt; typename VectorList::value_type &gt; &gt;, bool &gt;  = true&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_ip </td>
+          <td>(</td>
+          <td class="paramtype">const VectorList &amp;</td>          <td class="paramname"><span class="paramname"><em>vec</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Шаблон для std::vector и std::list. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vec</td><td>- ссылка на контейнер </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab84685271b6823ea1f2cf24ed6d37028" name="ab84685271b6823ea1f2cf24ed6d37028"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab84685271b6823ea1f2cf24ed6d37028">&#9670;&#160;</a></span>print_ip() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Integer , std::enable_if_t&lt; std::is_integral_v&lt; Integer &gt;, bool &gt;  = true&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_ip </td>
+          <td>(</td>
+          <td class="paramtype">Integer</td>          <td class="paramname"><span class="paramname"><em>integer</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Шаблонная функция "вывода IP" для целых чисел </p>
+<dl class="tparams"><dt>Параметры шаблона</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Integer</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">integer</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="afbc741db0adfca11ec98ec677b51f905" name="afbc741db0adfca11ec98ec677b51f905"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbc741db0adfca11ec98ec677b51f905">&#9670;&#160;</a></span>printTupleImp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TupleT , std::size_t... Is&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void printTupleImp </td>
+          <td>(</td>
+          <td class="paramtype">const TupleT &amp;</td>          <td class="paramname"><span class="paramname"><em>tp</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::index_sequence&lt; Is... &gt;</td>          <td class="paramname"><span class="paramname"></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Собственно реализация вывода элементов std::tuple. </p>
+<dl class="tparams"><dt>Параметры шаблона</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">TupleT</td><td>- тип std::tuple&lt;...&gt; </td></tr>
+    <tr><td class="paramname">Is</td><td>- Набор индексов, перебирая которые мы имитируем цикл </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tp</td><td>- собственно объект std::tuple&lt;...&gt; </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0
+</small></address>
+</body>
+</html>
